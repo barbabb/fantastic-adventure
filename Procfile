@@ -1,2 +1,2 @@
-web: python server.py --bind 0.0.0.0:${PORT}
+web: python server.py
 worker: streamlit run preddeliveryv1.py
