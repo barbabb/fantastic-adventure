@@ -25,7 +25,7 @@ team_dict = {'atl':'Atlanta Falcons', 'buf':'Buffalo Bills', 'car':'Carolina Pan
          'pit':'Pittsburgh Steelers', 'rai':'Las Vegas Raiders', 'ram':'Los Angeles Rams', 'rav':'Baltimore Ravens', 'sdg':'Los Angeles Chargers', 'sea':'Seattle Seahawks', 'sfo':'San Francisco 49ers',
          'tam':'Tampa Bay Buccaneers', 'was':'Washington Football Team'}
 
-df_url = '2020df_week14.csv'
+df_url = 'https://raw.githubusercontent.com/barbabb/fantastic-adventure/master/2020df_week14.csv'
 df = pd.read_csv(df_url)
 df['Opp_Name'] = df['Opp_Name'].astype('category')
 df['Team'] = df['Team'] .astype('category')
@@ -60,8 +60,8 @@ y_reg = to_pred['Result'].copy()
 
 
 
-regmodel = lgb.Booster(model_file='regmodelv2_train18.txt')
-classmodel = lgb.Booster(model_file='classmodel_train18.txt')
+regmodel = lgb.Booster(model_file='https://raw.githubusercontent.com/barbabb/fantastic-adventure/master/regmodelv2_train18.txt')
+classmodel = lgb.Booster(model_file='https://raw.githubusercontent.com/barbabb/fantastic-adventure/master/classmodel_train18.txt')
 
 reg_preds = regmodel.predict(X_reg)
 class_preds = classmodel.predict(X_class)
