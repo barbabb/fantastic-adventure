@@ -60,8 +60,8 @@ y_reg = to_pred['Result'].copy()
 
 
 
-regmodel = lgb.Booster(model_file='D:/Documents/ML DOCS/Models/regmodelv2_train18.txt')
-classmodel = lgb.Booster(model_file='D:/Documents/ML DOCS/Models/classmodel_train18.txt')
+regmodel = lgb.Booster(model_file='https://raw.githubusercontent.com/barbabb/fantastic-adventure/master/regmodelv2_train18.txt')
+classmodel = lgb.Booster(model_file='https://raw.githubusercontent.com/barbabb/fantastic-adventure/master/classmodel_train18.txt')
 
 reg_preds = regmodel.predict(X_reg)
 class_preds = classmodel.predict(X_class)
