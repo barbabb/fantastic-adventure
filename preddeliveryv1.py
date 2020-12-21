@@ -3,21 +3,32 @@ import numpy as np
 import lightgbm as lgb
 import streamlit as st
 
+
 st.write("""
-# NFL Margin and Confidence Predictor Models
+# **NFL Margin and Confidence Predictor Models**
 
-Margin: Positive numbers are margins predicted in favor of the Home Team, negative margins for the Away Team
 
-Confidence:
 
-1 = Home Team classified as winner
+### **Margin: Positive numbers are margins predicted in favor of the Home Team, negative margins for the Away Team.**
 
-0 = Pass, too close to classify either as outright winner
 
--1 = Away Team classified as winner
+
+**Confidence:**
+
+- 1 =  Home Team classified as winner
+- 0 =  Pass, too close to classify either as outright winner
+- -1 = Away Team classified as winner
+
+
+#### ** *Picks are predicted when the page is called. It's possible that games predicted to be very close might variate over multiple times loading the page.**
+
+##### **Idea: Construct *your* picks based on: Size of predicted margin and for who, if the confidence model agrees, and accumulated outside knowledge about the specific game.**
+
 
 
 """)
+
+
 
 team_dict = {'atl':'Atlanta Falcons', 'buf':'Buffalo Bills', 'car':'Carolina Panthers', 'chi':'Chicago Bears', 'cin':'Cincinnati Bengals', 'cle':'Cleveland Browns', 'clt':'Indianapolis Colts', 'crd':'Arizona Cardinals',
          'dal':'Dallas Cowboys', 'den':'Denver Broncos', 'det':'Detroit Lions', 'gnb':'Green Bay Packers', 'htx':'Houston Texans', 'jax':'Jacksonville Jaguars', 'kan':'Kansas City Chiefs', 'mia':'Miami Dolphins', 
@@ -25,16 +36,14 @@ team_dict = {'atl':'Atlanta Falcons', 'buf':'Buffalo Bills', 'car':'Carolina Pan
          'pit':'Pittsburgh Steelers', 'rai':'Las Vegas Raiders', 'ram':'Los Angeles Rams', 'rav':'Baltimore Ravens', 'sdg':'Los Angeles Chargers', 'sea':'Seattle Seahawks', 'sfo':'San Francisco 49ers',
          'tam':'Tampa Bay Buccaneers', 'was':'Washington Football Team'}
 
-df_url = '2020df_week14.csv'
+df_url = '2020df_week15.csv'
 df = pd.read_csv(df_url)
 df['Opp_Name'] = df['Opp_Name'].astype('category')
 df['Team'] = df['Team'] .astype('category')
 
-week = 14
+week = 15
 df1 = df[df['Week'].between(week-3, week-1)]
-df1 = df1[~df1.Opp_Name.str.contains("Bye")]
 df1.reset_index(inplace=True)
-# print(df1.head())
 dfavg = df1.groupby(['Team']).agg([np.average]).copy()
 dfavg.columns = ['index', 'Unnamed: 0','Week',	'Result',	'Home',	'Tm',	'Opp',	'OFF1stD',	'OFFTotYd',	'OFFPassY',	'OFFRushY',	'TOOFF',	'DEF1stD',	'DEFTotYd',
                  'DEFPassY',	'DEFRushY',	'TODEF',	'OffenseEP',	'DefenseEP',	'Sp_TmsEP']
