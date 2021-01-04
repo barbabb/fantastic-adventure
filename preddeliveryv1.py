@@ -20,7 +20,7 @@ st.write("""
 - -1 = Away Team classified as winner
 
 
-#### ** *Picks are predicted when the page is called. It's possible that games predicted to be very close might variate over multiple times loading the page.**
+
 
 ##### **Idea: Construct *your* picks based on: Size of predicted margin and for who, if the confidence model agrees, and accumulated outside knowledge about the specific game.**
 
