@@ -36,12 +36,12 @@ team_dict = {'atl':'Atlanta Falcons', 'buf':'Buffalo Bills', 'car':'Carolina Pan
          'pit':'Pittsburgh Steelers', 'rai':'Las Vegas Raiders', 'ram':'Los Angeles Rams', 'rav':'Baltimore Ravens', 'sdg':'Los Angeles Chargers', 'sea':'Seattle Seahawks', 'sfo':'San Francisco 49ers',
          'tam':'Tampa Bay Buccaneers', 'was':'Washington Football Team'}
 
-df_url = '2020df_week18.csv'
+df_url = '2020df_week19.csv'
 df = pd.read_csv(df_url)
 df['Opp_Name'] = df['Opp_Name'].astype('category')
 df['Team'] = df['Team'] .astype('category')
 
-week = 18
+week = 19
 df1 = df[df['Week'].between(week-3, week-1)]
 df1.reset_index(inplace=True)
 dfavg = df1.groupby(['Team']).agg([np.average]).copy()
