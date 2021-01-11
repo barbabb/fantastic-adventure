@@ -70,7 +70,7 @@ y_reg = to_pred['Result'].copy()
 
 
 regmodel = lgb.Booster(model_file='regmodelv3_train18.txt')
-classmodel = lgb.Booster(model_file='classmodel_train18.txt')
+classmodel = lgb.Booster(model_file='classmodel_train18v2.txt')
 
 reg_preds = regmodel.predict(X_reg)
 class_preds = classmodel.predict(X_class)
