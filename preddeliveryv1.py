@@ -44,7 +44,7 @@ df['Team'] = df['Team'] .astype('category')
 week = 19
 df1 = df[df['Week'].between(week-3, week-1)]
 df1.reset_index(inplace=True)
-dfavg = df1.groupby(['Team']).agg([np.average]).copy()
+dfavg = df1.groupby(['Team']).agg([np.average]).round(0).copy()
 dfavg.columns = ['index', 'Unnamed: 0','Week',	'Result',	'Home',	'Tm',	'Opp',	'OFF1stD',	'OFFTotYd',	'OFFPassY',	'OFFRushY',	'TOOFF',	'DEF1stD',	'DEFTotYd',
                  'DEFPassY',	'DEFRushY',	'TODEF',	'OffenseEP',	'DefenseEP',	'Sp_TmsEP']
 dfavg = dfavg.reset_index()
